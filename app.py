@@ -23,16 +23,16 @@ df = pd.read_csv("nutrition.csv")
 rename_cols = {
     'Name': 'name',
     'Calories': 'calories',
-    'Protein(g)': 'protein (g)',
-    'Fat(g)': 'fat (g)',
-    'Carbohydrate(g)': 'carbohydrate (g)'
+    'Protein(g)': 'proteins',
+    'Fat(g)': 'fat',
+    'Carbohydrate(g)': 'carbohydrate'
 }
 df.rename(columns=rename_cols, inplace=True)
 
 # Buat label berdasarkan makronutrien dominan
 def label_makro(row):
     makro = {
-        'protein': row['protein (g)'],
+        'proteins': row['protein (g)'],
         'fat': row['fat (g)'],
         'carbohydrate': row['carbohydrate (g)']
     }
