@@ -18,21 +18,18 @@ df = pd.read_csv("nutrition.csv")
 # Tampilkan kolom-kolom yang tersedia (untuk debug awal)
 # st.write("Kolom tersedia:", df.columns.tolist())
 
-# Sesuaikan nama kolom berdasarkan file sebenarnya
-# Rename kolom jika perlu untuk konsistensi
+# Rename kolom untuk konsistensi dan sesuai dengan nama sebenarnya dalam file
 rename_cols = {
-    'Name': 'name',
-    'Calories': 'calories',
-    'Protein(g)': 'proteins',
-    'Fat(g)': 'fat',
-    'Carbohydrate(g)': 'carbohydrate'
+    'proteins': 'protein (g)',
+    'fat': 'fat (g)',
+    'carbohydrate': 'carbohydrate (g)'
 }
 df.rename(columns=rename_cols, inplace=True)
 
 # Buat label berdasarkan makronutrien dominan
 def label_makro(row):
     makro = {
-        'proteins': row['protein (g)'],
+        'protein': row['protein (g)'],
         'fat': row['fat (g)'],
         'carbohydrate': row['carbohydrate (g)']
     }
