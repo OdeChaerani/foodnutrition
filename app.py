@@ -12,7 +12,7 @@ from sklearn.metrics import classification_report, confusion_matrix
 import streamlit as st
 
 # Load dataset
-df = pd.read_csv("indonesian_food_and_drink_nutrition_dataset.csv")
+df = pd.read_csv("nutrition.csv")
 
 # Buat label berdasarkan makronutrien dominan
 def label_makro(row):
