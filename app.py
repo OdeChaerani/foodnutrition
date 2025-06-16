@@ -12,11 +12,30 @@ from sklearn.metrics import classification_report, confusion_matrix
 import streamlit as st
 
 # Load dataset
+# Gunakan file yang telah diunggah: nutrition.csv
 df = pd.read_csv("nutrition.csv")
+
+# Tampilkan kolom-kolom yang tersedia (untuk debug awal)
+# st.write("Kolom tersedia:", df.columns.tolist())
+
+# Sesuaikan nama kolom berdasarkan file sebenarnya
+# Rename kolom jika perlu untuk konsistensi
+rename_cols = {
+    'Name': 'name',
+    'Calories': 'calories',
+    'Protein(g)': 'protein (g)',
+    'Fat(g)': 'fat (g)',
+    'Carbohydrate(g)': 'carbohydrate (g)'
+}
+df.rename(columns=rename_cols, inplace=True)
 
 # Buat label berdasarkan makronutrien dominan
 def label_makro(row):
-    makro = {'protein': row['protein (g)'], 'fat': row['fat (g)'], 'carbohydrate': row['carbohydrate (g)']}
+    makro = {
+        'protein': row['protein (g)'],
+        'fat': row['fat (g)'],
+        'carbohydrate': row['carbohydrate (g)']
+    }
     return max(makro, key=makro.get)
 
 df['label'] = df.apply(label_makro, axis=1)
